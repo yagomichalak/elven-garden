@@ -7,6 +7,7 @@ import winsound
 
 # Variáveis globais
 IMAGE_PATH = "assets/images/"
+SOUND_PATH = "assets/sounds/"
 
 # Registrar imagens
 imagens = ['Elven_Elf_Left.gif', 'Elven_Elf_Right.gif', 'Elven_Block.gif', 'Elven_Coin.gif',
@@ -30,7 +31,7 @@ def main_menu():
     menu.title('Elven Garden')
 
     #Música tema do menu principal
-    theme = winsound.PlaySound('Elven_Main_Menu_Theme', winsound.SND_LOOP | winsound.SND_ASYNC | winsound.SND_FILENAME)
+    theme = winsound.PlaySound(SOUND_PATH + 'Elven_Main_Menu_Theme', winsound.SND_LOOP | winsound.SND_ASYNC | winsound.SND_FILENAME)
 
     # Caneta do menu
     class Pen(turtle.Turtle):
@@ -190,19 +191,19 @@ def level_menu():
     # Função dos botões
     def botão_clickado(x, y):
         if x >= -300 and x <= -50 and y <= 220 and y >= 140:
-            winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
+            winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
             time.sleep(0.5)
             turtle.clearscreen()
             level_1()
 
         if x >= 50 and x <= 300 and y <= 220 and y >= 140:
-            winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
+            winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
             time.sleep(0.5)
             turtle.clearscreen()
             level_2()
 
         if x >= -300 and x <= -50 and y <=  80 and y >= 0:
-            winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
+            winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
             time.sleep(0.5)
             turtle.clearscreen()
             level_3()
@@ -576,9 +577,9 @@ def level_1():
                 score_moedas.write(f'Moedas Obtidas: {jogador.moedas}/{qnt_moeda}', align='center',
                                    font=('Courier', 24, 'normal'))
                 if jogador.moedas == 1:
-                    winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
                 elif jogador.moedas > 1:
-                    winsound.PlaySound('Elven_Coin_Sound4', winsound.SND_ASYNC | winsound.SND_FILENAME)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound4', winsound.SND_ASYNC | winsound.SND_FILENAME)
 
                 # Destruir o tesouro
                 tesouro.destroy()
@@ -1073,9 +1074,9 @@ def level_2():
                 print(f'Ouro do Jogador {jogador.gold}')
 
                 if jogador.moedas == 1:
-                    winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC)
                 elif jogador.moedas > 1:
-                    winsound.PlaySound('Elven_Coin_Sound4', winsound.SND_ASYNC)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound4', winsound.SND_ASYNC)
 
                 # Destruir o tesouro
                 tesouro.destroy()
@@ -1517,9 +1518,9 @@ def level_3():
                 score_moedas.clear()
                 score_moedas.write(f'Moedas Obtidas: {jogador.moedas}/{qnt_moeda}', align='center', font=('Courier', 18, 'bold'))
                 if jogador.moedas == 1:
-                    winsound.PlaySound('Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound', winsound.SND_ASYNC | winsound.SND_FILENAME)
                 elif jogador.moedas > 1:
-                    winsound.PlaySound('Elven_Coin_Sound4', winsound.SND_ASYNC | winsound.SND_FILENAME)
+                    winsound.PlaySound(SOUND_PATH + 'Elven_Coin_Sound4', winsound.SND_ASYNC | winsound.SND_FILENAME)
 
                 # Destruir o tesouro
                 tesouro.destroy()
