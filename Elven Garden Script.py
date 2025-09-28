@@ -1,33 +1,32 @@
-# Criar o menu principal
+# Dependencies
 import turtle
 import time
 import winsound
 
+# Custom Modules
 from levels.levels_menu import LevelMenu
 
-# Variáveis globais
+# Global Variables
 IMAGE_PATH = "assets/images/"
 SOUND_PATH = "assets/sounds/"
 
-# Registrar imagens
-imagens = ['Elven_Elf_Left.gif', 'Elven_Elf_Right.gif', 'Elven_Block.gif', 'Elven_Coin.gif',
+# Images
+images = ['Elven_Elf_Left.gif', 'Elven_Elf_Right.gif', 'Elven_Block.gif', 'Elven_Coin.gif',
            'Elven_Center.gif', 'Elven_Player_Down.gif', 'Elven_Player_Up.gif',
            'Elven_Player_Left.gif', 'Elven_Player_Right.gif', 'Elven_Info.gif',
            'Elven_Exit.gif', 'Elven_Tree.gif', 'Elven_Orc_Down.gif', 'Elven_Orc_Up.gif',
            'Elven_Orc_Left.gif', 'Elven_Orc_Right.gif', 'Elven_Staff.gif','Elven_OrbFlash.gif',
            'Elven_Bat_Up.gif', 'Elven_Bat_Down.gif', 'Elven_Knight_Down.gif', 'Elven_CastleBrick.gif',
            'Elven_CastleWoodDoor.gif']
-for i in imagens:
-    turtle.register_shape(IMAGE_PATH + i)
 
 
 class ElvenGarden(LevelMenu):
     """ Elven Garden Game - Main Class """
 
     def __init__(self) -> None:
-        # Registers the images
 
-        for i in imagens:
+        # Registers the images
+        for i in images:
             turtle.register_shape(IMAGE_PATH + i)
 
     def main(self):
