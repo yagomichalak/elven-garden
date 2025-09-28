@@ -5,6 +5,9 @@ import random
 import math
 import winsound
 
+# Variáveis globais
+IMAGE_PATH = "assets/images/"
+
 # Registrar imagens
 imagens = ['Elven_Elf_Left.gif', 'Elven_Elf_Right.gif', 'Elven_Block.gif', 'Elven_Coin.gif',
            'Elven_Center.gif', 'Elven_Player_Down.gif', 'Elven_Player_Up.gif',
@@ -14,16 +17,16 @@ imagens = ['Elven_Elf_Left.gif', 'Elven_Elf_Right.gif', 'Elven_Block.gif', 'Elve
            'Elven_Bat_Up.gif', 'Elven_Bat_Down.gif', 'Elven_Knight_Down.gif', 'Elven_CastleBrick.gif',
            'Elven_CastleWoodDoor.gif']
 for i in imagens:
-    turtle.register_shape(i)
+    turtle.register_shape(IMAGE_PATH + i)
 
 
 def main_menu():
     # Tela do Menu
-    turtle.register_shape('Elven_Main_Menu.gif')
+    turtle.register_shape(IMAGE_PATH + 'Elven_Main_Menu.gif')
     menu = turtle.Screen()
     menu.setup(width=750, height=750)
     menu.bgcolor('black')
-    menu.bgpic('Elven_Main_Menu.gif')
+    menu.bgpic(IMAGE_PATH + "Elven_Main_Menu.gif")
     menu.title('Elven Garden')
 
     #Música tema do menu principal
@@ -94,7 +97,7 @@ def level_menu():
     level_menu = turtle.Screen()
     level_menu.setup(width=750, height=750)
     level_menu.bgcolor('black')
-    level_menu.bgpic('Elven_Level_Menu.gif')
+    level_menu.bgpic(IMAGE_PATH + 'Elven_Level_Menu.gif')
     level_menu.title('Level Menu')
 
     # Caneta do Level Menu
@@ -225,7 +228,7 @@ def level_1():
     # Botão info
     botinfo = turtle.Turtle()
     botinfo.speed(0)
-    botinfo.shape('Elven_Info.gif')
+    botinfo.shape(IMAGE_PATH + 'Elven_Info.gif')
     botinfo.color('blue')
     botinfo.penup()
     botinfo.goto(288, 320)
@@ -236,7 +239,7 @@ def level_1():
     # Botão exit
     botexit = turtle.Turtle()
     botexit.speed(0)
-    botexit.shape('Elven_Exit.gif')
+    botexit.shape(IMAGE_PATH + 'Elven_Exit.gif')
     botexit.color('blue')
     botexit.penup()
     botexit.goto(-288, 320)
@@ -285,7 +288,7 @@ def level_1():
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
             self.color('red')
-            self.shape('Elven_Elf_Right.gif')
+            self.shape(IMAGE_PATH + 'Elven_Elf_Right.gif')
             self.speed(0)
             self.penup()
             self.goto(x, y)
@@ -304,12 +307,12 @@ def level_1():
             elif self.direction == 'right':
                 dx = 24
                 dy = 0
-                self.shape('Elven_Elf_Right.gif')
+                self.shape(IMAGE_PATH + 'Elven_Elf_Right.gif')
 
             elif self.direction == 'left':
                 dx = -24
                 dy = 0
-                self.shape('Elven_Elf_Left.gif')
+                self.shape(IMAGE_PATH + 'Elven_Elf_Left.gif')
 
             else:
                 dx = 0
@@ -332,7 +335,7 @@ def level_1():
     class Tesouro(turtle.Turtle):
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
-            self.shape('Elven_Coin.gif')
+            self.shape(IMAGE_PATH + 'Elven_Coin.gif')
             self.color('gold')
             self.speed(0)
             self.gold = 100
@@ -389,7 +392,7 @@ def level_1():
         def __init__(self):
             turtle.Turtle.__init__(self)
             self.color('blue')
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.speed(0)
             self.penup()
             self.gold = 0
@@ -401,7 +404,7 @@ def level_1():
         def go_up(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() + 24
-            self.shape('Elven_Player_Up.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Up.gif')
             self.direction = 'Up'
 
             # Checar se não tem uma parede no spot
@@ -411,7 +414,7 @@ def level_1():
         def go_down(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() - 24
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.direction = 'Down'
 
             # Checar se não tem uma parede no spot
@@ -421,7 +424,7 @@ def level_1():
         def go_right(self):
             mover_para_x = jogador.xcor() + 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Right.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Right.gif')
             self.direction = 'Right'
 
             # Checar se não tem uma parede no spot
@@ -431,7 +434,7 @@ def level_1():
         def go_left(self):
             mover_para_x = jogador.xcor() - 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Left.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Left.gif')
             self.direction = 'Left'
 
             # Checar se não tem uma parede no spot
@@ -498,7 +501,7 @@ def level_1():
 
                 # Checar se é um X (representando uma parede)
                 if entidade == 'X':
-                    caneta.shape('Elven_Block.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Block.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
@@ -517,7 +520,7 @@ def level_1():
 
                 # Checar se é um C (representando o centro)
                 if entidade == 'C':
-                    caneta.shape('Elven_Center.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Center.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
 
@@ -599,7 +602,7 @@ def level_2():
     # Botão info
     botinfo = turtle.Turtle()
     botinfo.speed(0)
-    botinfo.shape('Elven_Info.gif')
+    botinfo.shape(IMAGE_PATH + 'Elven_Info.gif')
     botinfo.color('blue')
     botinfo.penup()
     botinfo.goto(288, 320)
@@ -610,7 +613,7 @@ def level_2():
     # Botão exit
     botexit = turtle.Turtle()
     botexit.speed(0)
-    botexit.shape('Elven_Exit.gif')
+    botexit.shape(IMAGE_PATH + 'Elven_Exit.gif')
     botexit.color('blue')
     botexit.penup()
     botexit.goto(-288, 320)
@@ -660,7 +663,7 @@ def level_2():
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
             self.color('red')
-            self.shape('Elven_Elf_Right.gif')
+            self.shape(IMAGE_PATH + 'Elven_Elf_Right.gif')
             self.speed(0)
             self.penup()
             self.goto(x, y)
@@ -679,12 +682,12 @@ def level_2():
             elif self.direction == 'right':
                 dx = 24
                 dy = 0
-                self.shape('Elven_Elf_Right.gif')
+                self.shape(IMAGE_PATH + 'Elven_Elf_Right.gif')
 
             elif self.direction == 'left':
                 dx = -24
                 dy = 0
-                self.shape('Elven_Elf_Left.gif')
+                self.shape(IMAGE_PATH + 'Elven_Elf_Left.gif')
 
             else:
                 dx = 0
@@ -707,7 +710,7 @@ def level_2():
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
             self.color('red')
-            self.shape('Elven_Orc_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Orc_Down.gif')
             self.speed(0)
             self.penup()
             self.goto(x, y)
@@ -718,22 +721,22 @@ def level_2():
             if self.direction == 'up':
                 dx = 0
                 dy = 24
-                self.shape('Elven_Orc_Up.gif')
+                self.shape(IMAGE_PATH + 'Elven_Orc_Up.gif')
 
             elif self.direction == 'down':
                 dx = 0
                 dy = -24
-                self.shape('Elven_Orc_Down.gif')
+                self.shape(IMAGE_PATH + 'Elven_Orc_Down.gif')
 
             elif self.direction == 'right':
                 dx = 24
                 dy = 0
-                self.shape('Elven_Orc_Right.gif')
+                self.shape(IMAGE_PATH + 'Elven_Orc_Right.gif')
 
             elif self.direction == 'left':
                 dx = -24
                 dy = 0
-                self.shape('Elven_Orc_Left.gif')
+                self.shape(IMAGE_PATH + 'Elven_Orc_Left.gif')
 
             else:
                 dx = 0
@@ -778,7 +781,7 @@ def level_2():
     class Tesouro(turtle.Turtle):
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
-            self.shape('Elven_Coin.gif')
+            self.shape(IMAGE_PATH + 'Elven_Coin.gif')
             self.color('gold')
             self.speed(0)
             self.gold = 100
@@ -793,7 +796,7 @@ def level_2():
     class Arma(turtle.Turtle):
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
-            self.shape('Elven_Staff.gif')
+            self.shape(IMAGE_PATH + 'Elven_Staff.gif')
             self.color('brown')
             self.speed(0)
             self.gold = 100
@@ -855,7 +858,7 @@ def level_2():
         def __init__(self):
             turtle.Turtle.__init__(self)
             self.color('blue')
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.speed(0)
             self.penup()
             self.gold = 0
@@ -869,7 +872,7 @@ def level_2():
         def go_up(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() + 24
-            self.shape('Elven_Player_Up.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Up.gif')
             self.direction = 'Up'
 
             # Checar se não tem uma parede no spot
@@ -879,7 +882,7 @@ def level_2():
         def go_down(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() - 24
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.direction = 'Down'
 
             # Checar se não tem uma parede no spot
@@ -889,7 +892,7 @@ def level_2():
         def go_right(self):
             mover_para_x = jogador.xcor() + 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Right.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Right.gif')
             self.direction = 'Right'
 
             # Checar se não tem uma parede no spot
@@ -899,7 +902,7 @@ def level_2():
         def go_left(self):
             mover_para_x = jogador.xcor() - 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Left.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Left.gif')
             self.direction = 'Left'
 
             # Checar se não tem uma parede no spot
@@ -966,7 +969,7 @@ def level_2():
 
                 # Checar se é um X (representando uma parede)
                 if entidade == 'X':
-                    caneta.shape('Elven_Block.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Block.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
@@ -985,13 +988,13 @@ def level_2():
 
                 # Checar se é um C (representando o centro)
                 if entidade == 'C':
-                    caneta.shape('Elven_Center.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Center.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
 
                 # Checar se é um A (representando a árvore)
                 if entidade == 'A':
-                    caneta.shape('Elven_Tree.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Tree.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
@@ -1109,7 +1112,7 @@ def level_3():
     # Botão info
     botinfo = turtle.Turtle()
     botinfo.speed(0)
-    botinfo.shape('Elven_Info.gif')
+    botinfo.shape(IMAGE_PATH + 'Elven_Info.gif')
     botinfo.color('blue')
     botinfo.penup()
     botinfo.goto(288, 320)
@@ -1120,7 +1123,7 @@ def level_3():
     # Botão exit
     botexit = turtle.Turtle()
     botexit.speed(0)
-    botexit.shape('Elven_Exit.gif')
+    botexit.shape(IMAGE_PATH + 'Elven_Exit.gif')
     botexit.color('blue')
     botexit.penup()
     botexit.goto(-288, 320)
@@ -1181,7 +1184,7 @@ def level_3():
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
             self.color('red')
-            self.shape('Elven_Knight_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Knight_Down.gif')
             self.speed(0)
             self.penup()
             self.goto(x, y)
@@ -1192,7 +1195,7 @@ def level_3():
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
             self.color('red')
-            self.shape('Elven_Bat_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Bat_Down.gif')
             self.speed(0)
             self.penup()
             self.goto(x, y)
@@ -1209,7 +1212,7 @@ def level_3():
     class Tesouro(turtle.Turtle):
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
-            self.shape('Elven_Coin.gif')
+            self.shape(IMAGE_PATH + 'Elven_Coin.gif')
             self.color('gold')
             self.speed(0)
             self.gold = 100
@@ -1224,7 +1227,7 @@ def level_3():
     class Orb(turtle.Turtle):
         def __init__(self, x, y):
             turtle.Turtle.__init__(self)
-            self.shape('Elven_OrbFlash.gif')
+            self.shape(IMAGE_PATH + 'Elven_OrbFlash.gif')
             self.color('gold')
             self.speed(0)
             self.gold = 100
@@ -1287,7 +1290,7 @@ def level_3():
         def __init__(self):
             turtle.Turtle.__init__(self)
             self.color('blue')
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.speed(0)
             self.penup()
             self.orb = 'Não'
@@ -1300,7 +1303,7 @@ def level_3():
         def go_up(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() + 24
-            self.shape('Elven_Player_Up.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Up.gif')
             self.direction = 'Up'
 
             # Checar se não tem uma parede no spot
@@ -1310,7 +1313,7 @@ def level_3():
         def go_down(self):
             mover_para_x = jogador.xcor()
             mover_para_y = jogador.ycor() - 24
-            self.shape('Elven_Player_Down.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Down.gif')
             self.direction = 'Down'
 
             # Checar se não tem uma parede no spot
@@ -1320,7 +1323,7 @@ def level_3():
         def go_right(self):
             mover_para_x = jogador.xcor() + 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Right.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Right.gif')
             self.direction = 'Right'
 
             # Checar se não tem uma parede no spot
@@ -1330,7 +1333,7 @@ def level_3():
         def go_left(self):
             mover_para_x = jogador.xcor() - 24
             mover_para_y = jogador.ycor()
-            self.shape('Elven_Player_Left.gif')
+            self.shape(IMAGE_PATH + 'Elven_Player_Left.gif')
             self.direction = 'Left'
 
             # Checar se não tem uma parede no spot
@@ -1400,7 +1403,7 @@ def level_3():
 
                 # Checar se é um B (representando uma parede do castelo)
                 if entidade == 'B':
-                    caneta.shape('Elven_CastleBrick.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_CastleBrick.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
@@ -1424,13 +1427,13 @@ def level_3():
 
                 # Checar se é um C (representando o centro)
                 if entidade == 'C':
-                    caneta.shape('Elven_Center.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Center.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
 
                 #Checar se é um D (representando a porta de madeira do castelo)
                 if entidade == 'D':
-                    caneta.shape('Elven_CastleWoodDoor.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_CastleWoodDoor.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
@@ -1438,7 +1441,7 @@ def level_3():
 
                 # Checar se é um T (representando a árvore)
                 if entidade == 'A':
-                    caneta.shape('Elven_Tree.gif')
+                    caneta.shape(IMAGE_PATH + 'Elven_Tree.gif')
                     caneta.goto(tela_x, tela_y)
                     caneta.stamp()
                     # Adicionar coordenadas para a lista de paredes
